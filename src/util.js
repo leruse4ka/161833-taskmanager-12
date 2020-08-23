@@ -1,4 +1,9 @@
 
+export const RenderPosition = {
+  AFTERBEGIN: `afterbegin`,
+  BEFOREEND: `beforeend`
+};
+
 const getCurrentDate = () => {
   const currentDate = new Date();
   currentDate.setHours(23, 59, 59, 999);
@@ -37,4 +42,26 @@ export const isTaskRepeating = (repeating) => {
 
 export const humanizeTaskDueDate = (dueDate) => {
   return dueDate.toLocaleString(`en-US`, {day: `numeric`, month: `long`});
+};
+
+export const renderTemplate = (container, template, place) => {
+  container.insertAdjacentHTML(place, template);
+};
+
+export const createElement = (template) => {
+  const element = document.createElement(`div`);
+  element.innerHTML = template;
+
+  return element.firstChild;
+};
+
+export const render = (container, component, place) => {
+  switch (place) {
+    case RenderPosition.AFTERBEGIN:
+      container.prepend(component);
+      break;
+    case RenderPosition.BEFOREEND:
+      container.append(component);
+      break;
+  }
 };
