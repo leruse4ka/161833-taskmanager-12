@@ -1,4 +1,5 @@
-import {createElement} from "../util.js";
+import AbstractView from "./abstract";
+
 
 const createNoTaskTemplate = () => {
   return `<p class="board__no-tasks">
@@ -6,24 +7,8 @@ const createNoTaskTemplate = () => {
   </p>`;
 };
 
-export default class NoTask {
-  constructor() {
-    this._element = null;
-  }
-
+export default class NoTask extends AbstractView {
   getTemplate() {
     return createNoTaskTemplate();
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
