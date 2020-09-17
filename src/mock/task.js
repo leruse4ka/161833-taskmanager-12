@@ -1,7 +1,7 @@
 import {COLORS} from "../const.js";
 import {getRandomInteger} from "../utils/common.js";
 
-const generateId = () => Date.now() + parseInt(Math.random() * 10000, 10);
+export const generateId = () => Date.now() + parseInt(Math.random() * 10000, 10);
 
 const generateDescription = () => {
   const description = [
@@ -75,3 +75,4 @@ export const generateTask = () => {
     isFavorite: Boolean(getRandomInteger(0, 1))
   };
 };
+
